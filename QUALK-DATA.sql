@@ -15,10 +15,9 @@ DROP TABLE IF EXISTS `Center_Form`;
 DROP TABLE IF EXISTS `Report`;
 DROP TABLE IF EXISTS `User_Notify`;
 SET FOREIGN_KEY_CHECKS = 1;
-
-create database `QUALK`
-USE QUALK
-
+create database `QUALK`;
+use QUALK;
+drop database QUALK;
 CREATE TABLE `User` (
     `ID` BIGINT NOT NULL,
     `UserName` VARCHAR(255) NOT NULL,
@@ -116,14 +115,6 @@ CREATE TABLE `Location` (
     PRIMARY KEY (`ID`)
 );
 
-CREATE TABLE `Hire` (
-    `ID` INTEGER NOT NULL,
-    `Teacher_ID` INTEGER NOT NULL,
-    `Center_ID` INTEGER NOT NULL,
-    `Datetime` INTEGER NOT NULL,
-    `Accept` BOOLEAN NOT NULL,
-    PRIMARY KEY (`ID`)
-);
 
 CREATE TABLE `Notify` (
     `ID` BIGINT NOT NULL,
@@ -167,8 +158,6 @@ ALTER TABLE `Center_Info` ADD FOREIGN KEY (`Location_ID`) REFERENCES `Location`(
 ALTER TABLE `Form` ADD FOREIGN KEY (`Location_ID`) REFERENCES `Location`(`ID`);
 ALTER TABLE `Apply&Hire` ADD FOREIGN KEY (`Teacher_ID`) REFERENCES `Teacher_CV`(`ID`);
 ALTER TABLE `Apply&Hire` ADD FOREIGN KEY (`Center_ID`) REFERENCES `Center_Info`(`ID`);
-ALTER TABLE `Hire` ADD FOREIGN KEY (`Teacher_ID`) REFERENCES `Teacher_CV`(`ID`);
-ALTER TABLE `Hire` ADD FOREIGN KEY (`Center_ID`) REFERENCES `Center_Info`(`ID`);
 ALTER TABLE `Center_Form` ADD FOREIGN KEY (`Center_ID`) REFERENCES `Center_Info`(`ID`);
 ALTER TABLE `Center_Form` ADD FOREIGN KEY (`Form_ID`) REFERENCES `Form`(`ID`);
 ALTER TABLE `Report` ADD FOREIGN KEY (`Teacher_ID`) REFERENCES `Teacher_CV`(`ID`);
