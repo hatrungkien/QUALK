@@ -19,7 +19,7 @@ create database `QUALK`;
 use QUALK;
 drop database QUALK;
 CREATE TABLE `User` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `UserName` VARCHAR(255) NOT NULL,
     `PassWord` VARCHAR(255) NOT NULL,
     `Email` VARCHAR(255) NOT NULL,
@@ -27,14 +27,14 @@ CREATE TABLE `User` (
 );
 
 CREATE TABLE `User_Role` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `User_ID` BIGINT NOT NULL,
     `Role_ID` BIGINT NOT NULL,
     PRIMARY KEY (`ID`)
 );
 
 CREATE TABLE `Role` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `RoleName` VARCHAR(20) NOT NULL,
     `View` BOOLEAN NOT NULL,
     `Insert` BOOLEAN NOT NULL,
@@ -44,21 +44,21 @@ CREATE TABLE `Role` (
 );
 
 CREATE TABLE `Role_Function` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `Role_ID` BIGINT NOT NULL,
     `Funtion_ID` BIGINT NOT NULL,
     PRIMARY KEY (`ID`)
 );
 
 CREATE TABLE `Funtion` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `FunctionName` VARCHAR(20) NOT NULL,
     `Code` TEXT NOT NULL,
     PRIMARY KEY (`ID`)
 );
 
 CREATE TABLE `Teacher_CV` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `Location_ID` BIGINT NOT NULL,
     `Name` VARCHAR(255) NOT NULL,
     `BirthDate` DATE NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE `Teacher_CV` (
 );
 
 CREATE TABLE `Center_Info` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `User_ID` BIGINT NOT NULL,
     `Name` VARCHAR(255) NOT NULL,
     `Specialize` TEXT NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE `Center_Info` (
 );
 
 CREATE TABLE `Form` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `Location_ID` BIGINT NOT NULL,
     `Title` TEXT NOT NULL,
     `Salary` BIGINT NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE `Form` (
 );
 
 CREATE TABLE `Apply&Hire` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `Teacher_ID` BIGINT NOT NULL,
     `Center_ID` BIGINT NOT NULL,
     `Datetime` DATETIME NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE `Apply&Hire` (
 );
 
 CREATE TABLE `Location` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `Name` VARCHAR(255) NOT NULL,
     `ProvinceID` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`ID`)
@@ -117,7 +117,7 @@ CREATE TABLE `Location` (
 
 
 CREATE TABLE `Notify` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `Datetime` DATETIME NOT NULL,
     `Title` VARCHAR(10) NOT NULL,
     `Text` TEXT NOT NULL,
@@ -125,14 +125,14 @@ CREATE TABLE `Notify` (
 );
 
 CREATE TABLE `Center_Form` (
-    `Id` BIGINT NOT NULL,
+    `Id` BIGINT NOT NULL auto_increment,
     `Center_ID` BIGINT NOT NULL,
     `Form_ID` BIGINT NOT NULL,
     PRIMARY KEY (`Id`)
 );
 
 CREATE TABLE `Report` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `Center_ID` BIGINT NOT NULL,
     `Teacher_ID` BIGINT NOT NULL,
     `Title` TEXT NOT NULL,
@@ -142,7 +142,7 @@ CREATE TABLE `Report` (
 );
 
 CREATE TABLE `User_Notify` (
-    `ID` BIGINT NOT NULL,
+    `ID` BIGINT NOT NULL auto_increment,
     `User_Receive` BIGINT NOT NULL,
     `User_Send` BIGINT NOT NULL,
     PRIMARY KEY (`ID`)
@@ -163,4 +163,4 @@ ALTER TABLE `Center_Form` ADD FOREIGN KEY (`Form_ID`) REFERENCES `Form`(`ID`);
 ALTER TABLE `Report` ADD FOREIGN KEY (`Teacher_ID`) REFERENCES `Teacher_CV`(`ID`);
 ALTER TABLE `Report` ADD FOREIGN KEY (`Center_ID`) REFERENCES `Center_Info`(`ID`);
 ALTER TABLE `User_Notify` ADD FOREIGN KEY (`User_Receive`) REFERENCES `User`(`ID`);
-ALTER TABLE `User_Notify` ADD FOREIGN KEY (`User_Send`) REFERENCES `User`(`ID`);
+ALTER TABLE `User_Notify` ADD FOREIGN KEY (`User_Send`) REFERENCES `User`(`ID`);funtion
